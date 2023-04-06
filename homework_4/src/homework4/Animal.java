@@ -19,7 +19,6 @@ public class Animal {
 	}
 	
 	public String getName() {
-		System.out.println("getName Animal: ");
 		return name;
 	}
 	
