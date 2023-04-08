@@ -8,16 +8,7 @@ public class Cat extends Animal{
 	
 	public Cat(String name, double run, double swim) {
 		super(name, run, swim);
-		
-		if(run > 200) {
-			System.out.println("Incorrect data of " + this.getName() + "'s run. \nPlease, change it(less than 200): ");
-			this.setRun(this.input());
-		}
-		
-		if(swim > 0) {
-			System.out.println("Incorrect data of " + this.getName() + "'s swim. \nPlease, change it (cat can't swim - enter -1): ");
-			this.setSwim(this.input());
-		}
+		this.checking(run, swim);
 		counterCat++;
 	}
 	
@@ -58,5 +49,22 @@ public class Cat extends Animal{
 	
 	public static void outputCountCat() {
 		System.out.println("Created " + counterCat + " cats");
+	}
+	
+	public int checking(double run, double swim) {
+		if(run <= 200 || swim <= 0) {
+			return 0;
+		}else {
+			if(run > 200) {
+				System.out.println("Incorrect data of " + this.getName() + "'s run. \nPlease, change it(less than 200): ");
+				this.setRun(this.input());
+			}
+			
+			if(swim > 0) {
+				System.out.println("Incorrect data of " + this.getName() + "'s swim. \nPlease, change it (cat can't swim - enter -1): ");
+				this.setSwim(this.input());
+			}
+			return 1;
+		}		
 	}
 }

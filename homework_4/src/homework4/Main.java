@@ -10,21 +10,21 @@ public class Main {
 		Scanner s = new Scanner(System.in);
 		
 		System.out.println("Enter the name of animal: ");
-		String nameAnimal = s.nextLine();
+		String nameAnimal = s.next();
 		System.out.println("Enter the length of the distance run: ");
 		double runAnimal = s.nextDouble();
 		System.out.println("Enter the name of the distance swim: ");
 		double swimAnimal = s.nextDouble();
 		
 		System.out.println("Enter the name of cat: ");
-		String nameCat = s.nextLine();
+		String nameCat = s.next();
 		System.out.println("Enter the length of the distance run: (no more than 200)");
 		double runCat = s.nextDouble();
 		System.out.println("Enter the name of the distance swim: (if can't swim - enter -1)");
 		double swimCat = s.nextDouble();
 		
 		System.out.println("Enter the name of dog: ");
-		String nameDog = s.nextLine();
+		String nameDog = s.next();
 		System.out.println("Enter the length of the distance run: (no more than 500)");
 		double runDog = s.nextDouble();
 		System.out.println("Enter the name of the distance swim: (no more than 10)");
