@@ -42,6 +42,22 @@ public class HomeWorkApp {
 		}
 	}
 	
+	public static String positiveOrNegative(int b) {
+		if(b >= 0) {
+			return "number is positive";
+		}else {
+			return "number is negative";
+		}
+	}
+	
+	public static boolean positiveOrNegativeReverse(int a) {
+		if(a < 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int a = s.nextInt();
@@ -56,6 +72,8 @@ public class HomeWorkApp {
 		System.out.println(printColor(value));
 		System.out.println(compareNumbers(a, b));
 		System.out.println(sumNumbers(a, b));
+		System.out.println(positiveOrNegative(b));
+		System.out.println();
 	}
 
 }
