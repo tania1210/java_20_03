@@ -8,7 +8,9 @@ public class HomeWorkApp {
 		return str.join("\n", str.split(", "));
 	}
 
-	public static String checkSumSign(int a, int b) {		
+	public static String checkSumSign() {		
+		int a = 0;
+		int b = -4;
 		if((a+b) >= 0) {
 			return "Сума позитивна";
 		}else {
@@ -16,7 +18,8 @@ public class HomeWorkApp {
 		}
 	}
 	
-	public static String printColor(int value) {
+	public static String printColor() {
+		int value = 105;
 		if(value < 1) {
 			return "Червоний";
 		}else if(value > 0 && value < 101) {
@@ -26,7 +29,9 @@ public class HomeWorkApp {
 		}
 	}
 	
-	public static String compareNumbers(int a, int b) {
+	public static String compareNumbers() {
+		int a = 53;
+		int b = -1;
 		if(a >= b) {
 			return "a >= b";
 		}else {
@@ -34,8 +39,8 @@ public class HomeWorkApp {
 		}
 	}
 	
-	public static boolean sumNumbers(int a, int b) {
-		if(a+b > 9 && a+b < 21) {
+	public static boolean sumNumbers(int a, int c) {
+		if(a+c > 9 && a+c < 21) {
 			return true;
 		}else {
 			return false;
@@ -58,22 +63,42 @@ public class HomeWorkApp {
 		}
 	}
 	
+	public static void print(String str, int i) {
+		for(int j = 0; j < i; j++) {
+			System.out.println(str);
+		}
+	}
+	
+	public static boolean checkLeapYear(int year) {
+		if(year % 4 == 0 & year % 100 != 0) {
+			return true;
+		}else if(year % 400 == 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int a = s.nextInt();
 		int b = s.nextInt();
-		int value = s.nextInt();
+		int c = s.nextInt();
+		int year = s.nextInt();
 		
 		String str = "Orange, Banana, Apple";
-		
+		String str2 = "It is a ninth task";
 		
 		System.out.println(printThreeWords(str));
-		System.out.println(checkSumSign(a, b));
-		System.out.println(printColor(value));
-		System.out.println(compareNumbers(a, b));
-		System.out.println(sumNumbers(a, b));
+		System.out.println(checkSumSign());
+		System.out.println(printColor());
+		System.out.println(compareNumbers());
+		System.out.println(sumNumbers(a, c));
 		System.out.println(positiveOrNegative(b));
-		System.out.println();
+		System.out.println(positiveOrNegativeReverse(a));
+		print(str2, c);
+		System.out.println(checkLeapYear(year));
 	}
 
 }
