@@ -26,6 +26,14 @@ public class HomeWorkApp {
 		}
 	}
 	
+	public static String compareNumbers(int a, int b) {
+		if(a >= b) {
+			return "a >= b";
+		}else {
+			return "a < b";
+		}
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int a = s.nextInt();
@@ -38,6 +46,7 @@ public class HomeWorkApp {
 		System.out.println(printThreeWords(str));
 		System.out.println(checkSumSign(a, b));
 		System.out.println(printColor(value));
+		System.out.println(compareNumbers(a, b));
 	}
 
 }
