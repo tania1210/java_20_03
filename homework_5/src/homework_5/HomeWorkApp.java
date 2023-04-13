@@ -34,6 +34,14 @@ public class HomeWorkApp {
 		}
 	}
 	
+	public static boolean sumNumbers(int a, int b) {
+		if(a+b > 9 && a+b < 21) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int a = s.nextInt();
@@ -47,6 +55,7 @@ public class HomeWorkApp {
 		System.out.println(checkSumSign(a, b));
 		System.out.println(printColor(value));
 		System.out.println(compareNumbers(a, b));
+		System.out.println(sumNumbers(a, b));
 	}
 
 }
