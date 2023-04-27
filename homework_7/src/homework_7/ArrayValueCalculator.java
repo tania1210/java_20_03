@@ -1,7 +1,7 @@
 package homework_7;
 
-import MyExceptions.ArrayDataException;
-import MyExceptions.ArraySizeException;
+import myExceptions.ArrayDataException;
+import myExceptions.ArraySizeException;
 
 public class ArrayValueCalculator {
 
@@ -16,10 +16,10 @@ public class ArrayValueCalculator {
 				if(i >= 4 || j >= 4) {
 					throw new ArraySizeException(j);
 				}else {
-					if(isInt(str[j])) {
+					try {
 						arr[i][j] = Integer.parseInt(str[j]);
 						result += arr[i][j];
-					}else {
+					}catch(NumberFormatException e) {
 						throw new ArrayDataException("uncorrect data: " + str[j] + " = array[" + i + "][" + j + "]");	
 					}
 				}					

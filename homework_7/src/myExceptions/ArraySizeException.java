@@ -1,4 +1,4 @@
-package MyExceptions;
+package myExceptions;
 
 public class ArraySizeException extends ArrayIndexOutOfBoundsException{
 
