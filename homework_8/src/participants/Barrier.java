@@ -1,4 +1,4 @@
-package interfaces;
+package participants;
 
 public interface Barrier {
 	
