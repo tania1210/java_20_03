@@ -10,13 +10,13 @@ public class Main {
 //		Fruit<Apple> app1 = new Fruit<>();
 //		Fruit<Apple> app2 = new Fruit <>();
 //		Fruit<Apple> app3 = new Fruit <>();
-//		Fruit<Apple, Orange> oran1 = new Fruit <>();
-//		Fruit<Apple, Orange> oran2 = new Fruit <>();
-//		Fruit<Apple, Orange> oran3 = new Fruit <>();
-//		Fruit<Apple, Orange> oran4 = new Fruit <>();
+//		Fruit<Orange> oran1 = new Fruit <>();
+//		Fruit<Orange> oran2 = new Fruit <>();
+//		Fruit<Orange> oran3 = new Fruit <>();
+//		Fruit<Orange> oran4 = new Fruit <>();
 		
-		Box <Apple> box1 = new Box <> ();
-		Box <Orange> box2 = new Box <> ();
+		Box <Apple, Orange> box1 = new Box <> ();
+		Box <Apple, Orange> box2 = new Box <> ();
 //		app.addOne("");
 //		app.addOne(100);
 //		app.addOne(app);
@@ -33,17 +33,30 @@ public class Main {
 		System.out.println(fruit.addT(new Apple()) + " size = " + fruit.size());
 		
 //		fruit.get(app1.get(0));
-		
+		System.out.println("\n\n");
 		Apple obj;
 		int j = 0;
 		for(int i = 0; i < fruit.size(); i++) {
+//			System.out.println("fruit class = " + fruit.get(i).getClass());
+			
 			if((fruit.get(i)) instanceof Apple) {
-				box1.add(fruit.get(i));
+				box1.addT(fruit.get(i));
 				System.out.println(true);
+				System.out.println("object = " + fruit.get(i) + "   i = " + i);
+			} else if((fruit.get(i)) instanceof Orange){
+				box2.addE(fruit.get(i));
+				System.out.println(true);
+				System.out.println("object = " + fruit.get(i) + "   i = " + i);
 			} else {
-				box2.add(fruit.get(i));
 				System.out.println(false);
 			}
+			
+
+			
+			
+			
+			
+			
 //			box1.add(fruit.get(i));
 			
 //			System.out.println(fruit.get(i));
@@ -133,22 +146,33 @@ public class Main {
 	}
 	
 	
-	public static class Box <T>{
+	public static class Box <T, E>{
 		private int size;
-		Object [] box;
+		Object [] boxes;
 		
 		public Box() {
 			this(10);
 		}
 	
 		public Box(int count) {
-			this.box = new Box[count];
+			this.boxes = new Object[count];
 		}
 		
-		public boolean add(T fruit) {			
-			for(int i = 0; i < box.length; i++) {
-				if(box[i] == null) {
-					box[i] = fruit;
+		public boolean addT(T fruit) {			
+			for(int i = 0; i < boxes.length; i++) {
+				if(boxes[i] == null) {
+					boxes[i] = fruit;
+					size++;
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		public boolean addE(E fruit) {			
+			for(int i = 0; i < boxes.length; i++) {
+				if(boxes[i] == null) {
+					boxes[i] = fruit;
 					size++;
 					return true;
 				}
