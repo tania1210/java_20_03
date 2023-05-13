@@ -5,6 +5,11 @@ import java.util.List;
 
 //import homework_11.Apple;
 public class Main {
+	public final static double wApple = 1;
+	public final static double wOrange = 1.5;
+	
+
+	
 
 	public static void main(String[] args) {
 		Fruit fruit = new Fruit(20);
@@ -12,13 +17,13 @@ public class Main {
 		Box <Apple> box1 = new Box <> (20);
 		Box <Orange> box2 = new Box <> (20);
 
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
 
 		for(int i = 0; i < fruit.size(); i++) {			
 			if((fruit.get(i)) instanceof Apple) {
@@ -41,15 +46,34 @@ public class Main {
 		for(int k = 0; k < box2.size(); k++) {
 			System.out.println("box2 = " + box2.get(k) + "\nk = " + k);
 		}
-		
-
-		
-
+	
 	}
+	
+	public double getWeight(Box [] box) {
+		double sum = 0;
+		
+		for(int i = 0; i < box.length; i++) {
+			
+		}
+		
+		return sum;
+	}
+	
+	
 	 public static class Apple extends Fruit {
-			String sort;
-			String color;
-			int weight;
+			private double weight;
+			
+			public Apple(double weight) {
+				this.weight = weight;
+			}
+			
+			public void setWeight(double weight) {
+				this.weight = weight;
+			}
+			
+			public double getWeight() {
+				return weight;
+			}
 			
 		}
 
@@ -57,8 +81,19 @@ public class Main {
 	 public static class Orange extends Fruit{
 			String sort;
 			String color;
-			int weight;
+			double weight;
 			
+			public Orange(double weight) {
+				this.weight = weight;
+			}
+			
+			public void setWeight(double weight) {
+				this.weight = weight;
+			}
+			
+			public double getWeight() {
+				return weight;
+			}
 		}
 
 	 
@@ -79,7 +114,6 @@ public class Main {
 		}
 		
 		public boolean add(Fruit<? extends Fruit> toAdd) {				
-				//розширення масиву
 				if(size > fruits.length/2) {
 //					expandArray();
 					return false;

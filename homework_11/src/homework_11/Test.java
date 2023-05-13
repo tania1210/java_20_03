@@ -5,81 +5,93 @@ import java.util.List;
 
 //import homework_11.Apple;
 public class Test {
+	public final static double wApple = 1;
+	public final static double wOrange = 1.5;
+	
+
+	
 
 	public static void main(String[] args) {
 		Fruit fruit = new Fruit(20);
 		
 		Box <Apple> box1 = new Box <> (20);
 		Box <Orange> box2 = new Box <> (20);
-//		box1.add("");
-//		box1.add(100);
-//		box1.add(new Apple());
-//		box1.add(new Orange());
-		
-//		System.out.println(app.getOne(0) + "\n" + app.getOne(1) + "\n" + app.getOne(2));
-		
-//		System.out.println(fruit.size());
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Orange()) + " size = " + fruit.size());
-		System.out.println(fruit.add(new Apple()) + " size = " + fruit.size());
-//		
-////		fruit.get(app1.get(0));
-//		System.out.println("\n\n");
-//		Apple obj;
-//		int j = 0;
-		for(int i = 0; i < fruit.size(); i++) {
-			
-			System.out.println("fruit class = " + fruit.get(i).getClass());
-			
+
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Orange(wOrange)) + " size = " + fruit.size());
+		System.out.println(fruit.add(new Apple(wApple)) + " size = " + fruit.size());
+
+		for(int i = 0; i < fruit.size(); i++) {			
 			if((fruit.get(i)) instanceof Apple) {
 				box1.add((Apple) fruit.get(i));
 				System.out.println(true);
-//				System.out.println("object = " + fruit.get(i) + "   i = " + i);
 			} else if((fruit.get(i)) instanceof Orange){
 				box2.add((Orange) fruit.get(i));
 				System.out.println(true);
-//				System.out.println("object = " + fruit.get(i) + "   i = " + i);
 			} else {
 				System.out.println(false);
 			}
-			
-			
-//			System.out.println(fruit.get(i));
 		}
+		
 		System.out.println("\n\n");
 		for(int k = 0; k < box1.size(); k++) {
 			System.out.println("box1 = " + box1.get(k) + "\nk = " + k);
 		}
+		
 		System.out.println("\n\n");
 		for(int k = 0; k < box2.size(); k++) {
 			System.out.println("box2 = " + box2.get(k) + "\nk = " + k);
 		}
+//		System.out.println("weight = " + box1.getWeight());
+//		System.out.println("get class = " + box1.get(0).getClass());
+//		System.out.println("weight = " + box1.getWeightF());//double
+		System.out.println("weight = " + box1.getWeightA());
+		System.out.println("weight = " + box2.getWeightO());
 		
-//		System.out.println(box.add() + " size = " + fruit.size());
-		
-
 	}
+	
+	
 	 public static class Apple extends Fruit {
-			String sort;
-			String color;
-			int weight;
+			private double weight;
+			
+			public Apple(double weight) {
+				this.weight = weight;
+			}
+			
+			public void setWeight(double weight) {
+				this.weight = weight;
+			}
+			
+			public double getWeightApple() {
+				return weight;
+			}
 			
 		}
 
 	 
 	 public static class Orange extends Fruit{
-			String sort;
-			String color;
-			int weight;
+			double weight;
 			
+			public Orange(double weight) {
+				this.weight = weight;
+			}
+			
+			public void setWeight(double weight) {
+				this.weight = weight;
+			}
+			
+			public double getWeightOrange() {
+				return weight;
+			}
 		}
 
 	 
 	 public static class Fruit <T> {
+		private double sum;
 		private int size;
 		Object [] fruits;
 		
@@ -96,7 +108,6 @@ public class Test {
 		}
 		
 		public boolean add(Fruit<? extends Fruit> toAdd) {				
-				//розширення масиву
 				if(size > fruits.length/2) {
 //					expandArray();
 					return false;
@@ -106,6 +117,7 @@ public class Test {
 					if(fruits[i] == null) {
 						fruits[i] = toAdd;
 						size++;
+//						sum += getWeight();
 						return true;
 					}
 				}
@@ -150,6 +162,29 @@ public class Test {
 			return (T) boxes[index];
 		}
 	
+		public double getWeightA() {
+			double sum = 0;
+			
+			for(int i = 0; i < size; i++) {
+				
+				sum += ((Apple) get(i)).getWeightApple();
+				System.out.println("i = " + i + "   sum = " + sum);
+				
+			}
+			
+			return sum;
+		}
+		
+		public double getWeightO() {
+			double sum = 0;
+			
+			for(int i = 0; i < size; i++) {
+				sum += ((Orange) get(i)).getWeightOrange();
+				System.out.println("i = " + i + "   sum = " + sum);
+			}
+			
+			return sum;
+		}
 	}
 }
 
