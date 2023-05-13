@@ -49,8 +49,13 @@ public class Test {
 //		System.out.println("weight = " + box1.getWeight());
 //		System.out.println("get class = " + box1.get(0).getClass());
 //		System.out.println("weight = " + box1.getWeightF());//double
-		System.out.println("weight = " + box1.getWeightA());
-		System.out.println("weight = " + box2.getWeightO());
+		System.out.println("\n\n");
+		System.out.println("weight = " + box1.getWeight(box1.get(0)));
+		System.out.println("weight = " + box2.getWeight(box2.get(0)));
+		
+		System.out.println("\n\n");
+		System.out.println("compare: " + box1.compare(box2.sum));
+		System.out.println("compare: " + box1.compare(box1.sum));
 		
 	}
 	
@@ -66,7 +71,7 @@ public class Test {
 				this.weight = weight;
 			}
 			
-			public double getWeightApple() {
+			public double getWeight() {
 				return weight;
 			}
 			
@@ -84,13 +89,14 @@ public class Test {
 				this.weight = weight;
 			}
 			
-			public double getWeightOrange() {
+			public double getWeight() {
 				return weight;
 			}
 		}
 
 	 
 	 public static class Fruit <T> {
+		 double weight;
 		private double sum;
 		private int size;
 		Object [] fruits;
@@ -127,11 +133,12 @@ public class Test {
 		public Fruit<? extends Fruit> get(int index) {
 			return (Fruit<? extends Fruit>) fruits[index];
 		}
-		
+				
 	}
 	
 	
 	public static class Box <T>{
+		double sum = 0;
 		private int size;
 		Object [] boxes;
 		
@@ -162,29 +169,37 @@ public class Test {
 			return (T) boxes[index];
 		}
 	
-		public double getWeightA() {
-			double sum = 0;
+		public double getWeight(Fruit<? extends Fruit> classType) {
+//			double sum = 0;			
 			
-			for(int i = 0; i < size; i++) {
-				
-				sum += ((Apple) get(i)).getWeightApple();
-				System.out.println("i = " + i + "   sum = " + sum);
-				
+			if(classType instanceof Apple) {
+				for(int i = 0; i < size; i++) {				
+					sum += ((Apple) get(i)).getWeight();			
+				}	
+			}else if(classType instanceof Orange) {
+				for(int i = 0; i < size; i++) {
+					sum += ((Orange) get(i)).getWeight();
+				}
+			}else {
+				return -1;
 			}
-			
 			return sum;
+		}
+
+		
+		public boolean compare(double sum) {
+			if(this.sum == sum) {
+				return true;
+			}else {
+				return false;
+			}
+
 		}
 		
-		public double getWeightO() {
-			double sum = 0;
-			
-			for(int i = 0; i < size; i++) {
-				sum += ((Orange) get(i)).getWeightOrange();
-				System.out.println("i = " + i + "   sum = " + sum);
-			}
-			
-			return sum;
-		}
+		
+		
+		
+		
 	}
 }
 
