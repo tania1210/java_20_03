@@ -46,17 +46,17 @@ public class Main {
 		for(int k = 0; k < box2.size(); k++) {
 			System.out.println("box2 = " + box2.get(k) + "\nk = " + k);
 		}
-	
-	}
-	
-	public double getWeight(Box [] box) {
-		double sum = 0;
+//		System.out.println("weight = " + box1.getWeight());
+//		System.out.println("get class = " + box1.get(0).getClass());
+//		System.out.println("weight = " + box1.getWeightF());//double
+		System.out.println("\n\n");
+		System.out.println("weight = " + box1.getWeight(box1.get(0)));
+		System.out.println("weight = " + box2.getWeight(box2.get(0)));
 		
-		for(int i = 0; i < box.length; i++) {
-			
-		}
+		System.out.println("\n\n");
+		System.out.println("compare: " + box1.compare(box2.sum));
+		System.out.println("compare: " + box1.compare(box1.sum));
 		
-		return sum;
 	}
 	
 	
@@ -79,8 +79,6 @@ public class Main {
 
 	 
 	 public static class Orange extends Fruit{
-			String sort;
-			String color;
 			double weight;
 			
 			public Orange(double weight) {
@@ -98,6 +96,8 @@ public class Main {
 
 	 
 	 public static class Fruit <T> {
+		 double weight;
+		private double sum;
 		private int size;
 		Object [] fruits;
 		
@@ -123,6 +123,7 @@ public class Main {
 					if(fruits[i] == null) {
 						fruits[i] = toAdd;
 						size++;
+//						sum += getWeight();
 						return true;
 					}
 				}
@@ -132,11 +133,12 @@ public class Main {
 		public Fruit<? extends Fruit> get(int index) {
 			return (Fruit<? extends Fruit>) fruits[index];
 		}
-		
+				
 	}
 	
 	
 	public static class Box <T>{
+		double sum = 0;
 		private int size;
 		Object [] boxes;
 		
@@ -167,6 +169,37 @@ public class Main {
 			return (T) boxes[index];
 		}
 	
+		public double getWeight(Fruit<? extends Fruit> classType) {
+//			double sum = 0;			
+			
+			if(classType instanceof Apple) {
+				for(int i = 0; i < size; i++) {				
+					sum += ((Apple) get(i)).getWeight();			
+				}	
+			}else if(classType instanceof Orange) {
+				for(int i = 0; i < size; i++) {
+					sum += ((Orange) get(i)).getWeight();
+				}
+			}else {
+				return -1;
+			}
+			return sum;
+		}
+
+		
+		public boolean compare(double sum) {
+			if(this.sum == sum) {
+				return true;
+			}else {
+				return false;
+			}
+
+		}
+		
+		
+		
+		
+		
 	}
 }
 
