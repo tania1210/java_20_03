@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Main {
+	static int sizeH;
 
 	public static void main(String[] args) {
 		String[] array = {"orange", "clever", "pen", "java", "green", "clever", "java", "program", "pen", "java", "clever"};
@@ -11,18 +12,21 @@ public class Main {
 		ArrayList <String> list = new ArrayList();
 		list = toListString(array);
 		//method 1
-//		System.out.println(countOccurance(array, "pen"));
+		System.out.println(countOccurance(array, "pen"));
 		
 		//method 2
-//		System.out.println(toList(arrayInt));
+		System.out.println(toList(arrayInt));
 		
 		//method 3
-//		System.out.println(findUnique(arrayInt));
+		System.out.println(findUnique(arrayInt));
 		
 		//method 4
-//		calcOccurance(list);
+		System.out.println(calcOccurance(list));
+
+		
 		
 		//method 5
+		System.out.println(findOccurance(list));
 		
 		
 	}
@@ -73,8 +77,33 @@ public class Main {
 		return list;	
 	}
 	
-	public static void calcOccurance(ArrayList list) {
-		Hashtable<String, Integer> dictionary = new Hashtable(20);		
+	public static String calcOccurance(ArrayList list) {
+		String result = "";
+		for(int j = 0; j < list.size(); j++) {
+			int count = 1;
+			boolean bool = true;
+			for(int i = 0; i < list.size(); i++) {
+				if(list.get(j) == list.get(i) && j != i) {
+					count++;
+				}				
+			}		
+			for(int k = j; k > 0; k--) {
+				if(list.get(j) == list.get(k) && k != j) {
+					bool = false;
+				}
+			}
+			if(bool) {
+				result += list.get(j) + ": " + Integer.toString(count) + "\n";
+			}else {
+				continue;
+			}
+		}
+		return result;
+	}
+	
+	public static Hashtable<String, Integer> findOccurance(ArrayList list) {
+		Hashtable<String, Integer> dictionary = new Hashtable(20);	
+		sizeH = 0;
 		for(int j = 0; j < list.size(); j++) {
 			int count = 1;
 			for(int i = 0; i < list.size(); i++) {
@@ -82,13 +111,11 @@ public class Main {
 					count++;
 				}				
 			}
-			dictionary.put((String) list.get(j), count);
+			dictionary.put((String) ("\n"+list.get(j)), count);
+			sizeH++;
 		}
-		for(int i = 0; i < dictionary.size(); i++) {
-			System.out.println(list.get(i) + ": " + dictionary.get(list.get(i)));
-		}
+		return dictionary;
 	}
-	
 	
 	
 }
