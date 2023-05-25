@@ -36,7 +36,7 @@ public class Main {
          }
 	}
 	
-	public static int[] shakerSort(int [] values) {
+	public static void shakerSort(int [] values) {
 		int left = 1;
 		int right = values.length -1;
 		int x = 0;
@@ -59,7 +59,6 @@ public class Main {
 			}
 			right--;
 		}
-		return values;
 	}
 	
 	private static void swap(int [] array, int i, int j) {
