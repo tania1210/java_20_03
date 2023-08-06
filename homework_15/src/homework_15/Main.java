@@ -47,7 +47,7 @@ public class Main {
 	     double totalPrice = Product.calculateTotalPrice(products);
 	     System.out.println("Result: " + totalPrice);
 	     
-	     System.out.println("\nTask 1.6:");
+	     System.out.println("\nTask 6.2:");
 	     Map<String, List<Product>> groupedProductsByType = Product.groupProductsByType(products);
 	     System.out.println("Result " + groupedProductsByType);
 	          
